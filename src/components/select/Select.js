@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import "./select.css";
 
-const Select = ({ template }) => {
-  //   const [selectedIndustry, setSelectedIndustry] = useState("");
+const Select = ({ type }) => {
+  const template = useSelector((state) => state.template);
 
-  //   const filterByIndustry = (filteredData) => {
-  //     // Avoid filter for empty string
-  //     if (!selectedIndustry) {
-  //       return filteredData;
-  //     }
+  const [selectedIndustry, setSelectedIndustry] = useState("");
 
-  //     const filteredIndustry = filteredData?.filter(
-  //       (data) => data.industry.split(" ").indexOf(selectedIndustry) !== -1
-  //     );
-  //     return filteredIndustry;
-  //   };
+  const filterByIndustry = (filteredData) => {
+    // Avoid filter for empty string
+    if (!selectedIndustry) {
+      return filteredData;
+    }
+
+    const filteredIndustry = template.templateItems?.filter(
+      (data) => data.category.split(" ").indexOf(data) !== -1
+    );
+    return filteredIndustry;
+  };
+
+  console.log(filterByIndustry);
 
   return (
     <div className="select">
-      <select>
-        <option value="Default">All</option>
-      </select>
+      <fieldset className="select_field">
+        <legend>{type}</legend>
+        <select>
+          <option>All</option>
+        </select>
+      </fieldset>
     </div>
   );
 };

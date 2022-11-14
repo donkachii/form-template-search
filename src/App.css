@@ -1,5 +1,6 @@
 .landing {
   padding: 4.75rem 7.25rem;
+  overflow-wrap: break-word;
 }
 
 .search {
@@ -8,12 +9,14 @@
   /* justify-content: space-between; */
   align-items: center;
   border: 0.5px solid #bdbdbd;
+  width: 319px;
   border-radius: 2px;
 }
 
 .search > input {
   border: none;
   outline: none;
+  width: 100%;
 }
 
 .search > img {
@@ -24,6 +27,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 5.188rem;
 }
 
@@ -31,6 +35,8 @@
   display: flex;
   align-items: center;
   column-gap: 1.25rem;
+  flex-wrap: wrap;
+  row-gap: 1rem;
 }
 
 .sort_landing p {
@@ -130,7 +136,7 @@
   align-items: center;
 }
 
-.navigationButtons {
+.navigation_buttons {
   width: 100%;
   height: 40px;
   list-style: none;
@@ -147,33 +153,47 @@
   padding-top: 40px; */
 }
 
-.navigationButtons a {
+.navigation_buttons a {
   padding: 10px;
   margin: 8px;
   border-radius: 5px;
-  border: 1px solid #3f3f3f;
+
   color: #3f3f3f;
   cursor: pointer;
 }
 
-.navigationButtons a:hover {
+.navigation_buttons a:hover {
   color: #3f3f3f;
   /* background-color: red; */
 }
 
-.navigationActive a {
-  color: #3f3f3f;
-  /* background-color: red; */
+.navigation_active a {
+  border: 1px solid #3f3f3f;
 }
 
-.navigationDisabled a {
+.navigation_disabled a {
   color: grey;
 }
 
-.previousButton {
+.navigation_break > a {
   border: none !important;
 }
 
-.nextButton {
+.previous_button {
+  margin: 0 !important;
+  padding: 0 !important;
   border: none !important;
+}
+
+.next_button {
+  border: none !important;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (max-width: 767px) {
+  .landing {
+    padding: 2rem 3rem;
+  }
 }

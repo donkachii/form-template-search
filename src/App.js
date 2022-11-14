@@ -9,6 +9,7 @@ import { fetchData } from "./components/templates/templateSlice";
 import infoBadge from "./assets/images/infoBadge.svg";
 import ReactPaginate from "react-paginate";
 import Select from "./components/select/Select";
+import { types } from "./components/types";
 
 function App() {
   const [filter, setFilter] = useState("");
@@ -31,6 +32,21 @@ function App() {
     setPage(selected);
   };
 
+  // let categoryData = [];
+
+  // if (!template.loading) {
+  //   for (let i = 0; i < template?.templateItems.length; i++) {
+  //     categoryData += template?.templateItems[i].category + ",";
+  //   }
+  // }
+
+  // let category =
+  //   !template.loading && template.templateItems.length
+  //     ? categoryData
+  //         ?.split(",")
+  //         .filter((value, i) => categoryData?.split(",").indexOf(value) === i)
+  //     : null;
+
   return (
     <div className="landing">
       <header>
@@ -38,9 +54,9 @@ function App() {
           <Search filter={filter} setFilter={setFilter} />
           <div className="sort_landing">
             <p>Sort By: </p>
-            <Select template={template} />
-            <Select template={template} />
-            <Select template={template} />
+            {types.map((type, i) => (
+              <Select key={i} type={type} />
+            ))}
           </div>
         </section>
         <section className="bagde_landing">
@@ -54,7 +70,14 @@ function App() {
       <section>
         <article className="template_heading">
           <span>All Templates</span>
-          <span>{template.templateItems.length || "0"} templates</span>
+          <span>
+            {
+              template.templateItems.filter((template) =>
+                filter ? template.name.includes(filter) : true
+              ).length
+            }{" "}
+            templates
+          </span>
         </article>
         <article className="templates_space">
           <Template
@@ -71,11 +94,13 @@ function App() {
           nextLabel={"Next>"}
           pageCount={totalPages}
           onPageChange={changePage}
-          containerClassName={"navigationButtons"}
-          previousLinkClassName={"previousButton"}
-          nextLinkClassName={"nextButton"}
-          disabledClassName={"navigationDisabled"}
-          activeClassName={"navigationActive"}
+          breakLabel="of"
+          breakClassName={"navigation_break"}
+          containerClassName={"navigation_buttons"}
+          previousLinkClassName={"previous_button"}
+          nextLinkClassName={"next_button"}
+          disabledClassName={"navigation_disabled"}
+          activeClassName={"navigation_active"}
         />
 
         {/* <span>Previous</span>

@@ -1,7 +1,7 @@
 import React from "react";
 import TemplateData from "./TemplateData";
 
-const Template = ({
+let Template = ({
   filterBy,
   template,
   numberOfRecordsVistited,
@@ -35,5 +35,7 @@ const Template = ({
     </>
   );
 };
+
+Template = React.memo(Template);
 
 export default Template;

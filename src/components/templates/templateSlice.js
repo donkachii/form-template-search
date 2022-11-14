@@ -35,6 +35,4 @@ const templateSlice = createSlice({
   },
 });
 
-console.log(templateSlice);
-
 export default templateSlice.reducer;
